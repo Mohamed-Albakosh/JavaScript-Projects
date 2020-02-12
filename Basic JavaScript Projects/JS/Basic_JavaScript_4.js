@@ -9,4 +9,5 @@ function my_Dictionary() {
     delete Animal.Sound;
     document.getElementById("Dictionary").innerHTML = Animal.Sound;
     document.getElementById("Dictionary1").innerHTML = Animal.Age;
+    
 }
