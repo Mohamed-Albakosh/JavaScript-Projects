@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <script>
+        
+        $(document).ready(function() {
+            $("html").append(
+                "<body>\
+                    <h2>HTML Links</h2>\
+                    <p><a href='https://www.w3schools.com/html/'>Visit our HTML tutorial</a></p>\
+                    <div id='container'>\
+                        <div id='inner' >\
+                         <h1> Basic jQuery</h1>\
+                        <p id='1'>Paragraph 1</p>\
+                    <p id='2'>Paragraph 2</p>\
+                      <p id='3'>Paragraph 3</p>\
+                      <p id='4'>paragraph 4</p>\
+                      <p id='5'>paragraph 5</p>\
+                      <input type='text' id='fname' name='fname'  value='foo'>\
+                      <input type='text' id='fname1' name='fname'  value='foo'>\
+                     </div>\
+                   </div>\
+                   <div>\
+                   <div  id='hd'visibility='hidden'>slidedown</div>\
+                    </body>"
+            );
+
+            //================================================
+            $( "<button type='button'>click here</button>" )
+            .text( "Disable Animations" )
+            .on( "click", function() {
+            jQuery.fx.off = true;
+             })
+               .appendTo( document.body );
+            //==========================================
+            jQuery.fx.speeds.fast = 300;
+            jQuery.fx.speeds.blazing = 100;
+            jQuery.fx.speeds.excruciating = 60000;
+            //===========================================
+            $( "#1" ).hide( 500 ).delay( 1500 ).show( 300 );
+            //==============================================
+
+            // Create a button to stop all animations on the page:
+                $( "<button type='button'></button>" )
+                    .text( "Stop All Animations" )
+                    .on( "click", function() {
+                        $( "body *" ).filter( ":animated" ).stop();
+                    })
+                    .appendTo( document.body );
+            //=================================================
+             // Run a callback even if there were no elements to animate
+                var someElement = $( "#5" );
+                
+                var cb = function() {
+                    console.log( "done!" );
+                };
+                
+                if ( someElement.length ) {
+                    someElement.fadeIn( 300, cb );
+                } else {
+                    cb();
+                }
+
+            $("#5").hide();
+            $( "#5" ).fadeIn( 750, function() {
+              // this = DOM element which has just finished being animated
+             $( this ).addClass( "lookAtMe" );
+
+});
+            //=============================================
+             // Instantaneously toggle the display of all paragraphs
+            // $("#1").hide();
+            //   $( "p" ).toggle();
+ 
+           //    $( "#4" ).slideToggle( 1000 );
+           //    $( "#3" ).fadeToggle( 400 );
+            //===============================================
+            // Hide all paragraphs using a fade out animation over 1.5 seconds
+             //  $( "p" ).fadeOut( 1500 );
+              $("#hd").hide();
+              // Show all hidden divs using a fade in animation over 0.75 seconds
+              $( "#hd" ).fadeIn( 750 );
+            //================================================
+            // Hide all paragraphs using a slide up animation over 0.8 seconds
+           // $( "p" ).slideDown( 800 );
+           // $("#hd").hide();
+             // Show all hidden divs using a slide down animation over 0.6 seconds
+            // $("#hd").show();
+           // $( "#hd" ).slideDown( 600 );
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // Instantaneously hide all paragraphs
+                //$( "p" ).hide();
+                // Instantaneously show all divs that have the hidden style class
+               // $("#hd").hide("slow");
+               // $( "#hd" ).show("fast");
+            //==================================================================
+            // Using .one() to bind several events
+             $( "input[id]" ).one( "focus mouseover keydown", firstEvent);
+ 
+             function firstEvent( eventObject ) {
+               console.log( "A " + eventObject.type + " event occurred for the first time on the input with id " + this.id );
+ }
+            //=====================================================
+            // Switching handlers using the `.one()` method
+                 $( "#1" ).one( "click", firstClick );
+ 
+                  function firstClick() {
+                 console.log( "You just clicked this for the first time!" );
+  
+                // Now set up the new handler for subsequent clicks;
+               // omit this step if no further click responses are needed
+               $( this ).click( function() { console.log( "You have clicked this before!" ); } );
+ }
+            //=========================================================
+            $( "#3" ).off( "click" );
+            // Binding multiple events with different handlers
+              $( "p" ).on({
+                 "click": function() { console.log( "clicked!" ); },
+               "mouseover": function() { console.log( "hovered!" ); }
+            });
+            //++++++++++++++++++++++++++++++++++++++++++++
+            // Tearing down a particular click handler, using a reference to the function
+            var foo = function() { console.log( "foo" ); };
+            var bar = function() { console.log( "bar" ); };
+ 
+              $( "#3" ).on( "click", foo ).on( "click", bar );
+             $( "#3" ).off( "click", bar ); // foo is still bound to the click event
+              //---------------------------------------
+
+            // Namespacing events
+$( "p" ).on( "click.myNamespace", function() { /* ... */ } );
+$( "p" ).off( "click.myNamespace" );
+$( "p" ).off( ".myNamespace" ); // Unbind all events in the namespace
+
+
+            //=====================================================
+            $( "input" ).on(
+             "change",
+              { foo: "bar" }, // Associate data with event binding
+                function( eventObject ) {
+             console.log("An input value has changed! ", eventObject.data.foo);
+               }
+              );
+              $( "input" ).on(
+               "click change", // Bind handlers for multiple events
+              function() {
+               console.log( "An input was clicked or changed!" );
+                 }
+                     );
+
+              //=================================
+              var element = $( this );
+              $( "a" ).click(function( eventObject ) {
+              var elem = $( this );
+              if ( elem.attr( "href" ).match( /evil/ ) ) {
+              eventObject.preventDefault();
+              elem.addClass( "evil" );
+    }
+});
+
+
+
+
+        });
+
+
+       
+ 
+    </script>
+</html>
