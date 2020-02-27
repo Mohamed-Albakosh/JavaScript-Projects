@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {
+    opacity: 1;
+    transition: 1s opacity;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: none;
+}
+        </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     </head>
+   <script>document.body.className += ' fade-out';</script> 
     <script>
+        
         
         $(document).ready(function() {
             $("html").append(
@@ -45,13 +58,9 @@
  // will not have the same click behavior as its peers
  $( "<button class='alert'>Alert!</button>" ).appendTo( document.body );
 });
-$( "input" ).on(
-    "change",
-    { foo: "bar" }, // Associate data with event binding
-    function( eventObject ) {
-        console.log("An input value has changed! ", eventObject.data.foo);
-    }
-);
+$( document ).ready(function() {
+    $('body').removeClass('fade-out');
+       });
 
     </script>
 </html>
