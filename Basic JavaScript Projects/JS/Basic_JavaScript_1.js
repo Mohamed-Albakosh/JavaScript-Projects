@@ -12,5 +12,5 @@ document.write(3+3);
 function MY_First_Function(){
     var str = "This text is green!";
     var result = str.fontcolor("green");
-    document.write("Green_Text").innerHTML= result;
+    document.getElementById("Green_text").innerHTML= result;
 }
