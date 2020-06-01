@@ -12,5 +12,9 @@ document.write(3+3);
 function MY_First_Function(){
     var str = "This text is green!";
     var result = str.fontcolor("green");
-    document.getElementById("Green_text").innerHTML= result;
+    document.write("Green_Text").innerHTML= result;
 }
+document.body.className += ' fade-out';
+$(function() {
+    $('body').removeClass('fade-out');
+});

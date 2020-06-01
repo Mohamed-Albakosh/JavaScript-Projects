@@ -66,7 +66,7 @@ let car = {
 };
 document.getElementById("Car_Object").innerHTML = car.description();
 }
-function brea_function()
+function brea_function() // this function illustrate break  and continue statments
 {
 var text1 = "";
 var i;
